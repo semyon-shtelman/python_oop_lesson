@@ -2,6 +2,7 @@ from src.category import Category
 from src.product import Product
 import pytest
 
+
 @pytest.fixture
 def new_product():
     return Product.new_product(
@@ -9,9 +10,10 @@ def new_product():
             "name": "Samsung Galaxy S23 Ultra",
             "description": "256GB, Серый цвет, 200MP камера",
             "price": 180000.0,
-            "quantity": 5
+            "quantity": 5,
         }
     )
+
 
 @pytest.fixture
 def product_1():
