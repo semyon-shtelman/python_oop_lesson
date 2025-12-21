@@ -1,6 +1,7 @@
 import pytest
 from src.product import Product
 
+
 @pytest.mark.parametrize(
     "product_fixture,expected_data",
     [
@@ -40,6 +41,7 @@ def test_product_init(request, product_fixture, expected_data):
     assert product.price == expected_data["price"]
     assert product.quantity == expected_data["quantity"]
 
+
 def test_product_new_product(new_product):
 
     assert new_product.name == "Samsung Galaxy S23 Ultra"
@@ -47,7 +49,8 @@ def test_product_new_product(new_product):
     assert new_product.price == 180000.0
     assert new_product.quantity == 5
 
-def test_product_price(capsys,new_product):
+
+def test_product_price(capsys, new_product):
     new_product.price = 800
     message = capsys.readouterr()
     assert message.out.strip() == ""
@@ -64,3 +67,15 @@ def test_product_price(capsys,new_product):
     assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
 
     assert new_product.price == 800
+
+
+def test_product_str(product_1, product_2, product_3):
+    assert str(product_1) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+    assert str(product_2) == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
+    assert str(product_3) == "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт."
+
+
+def test_product_add(product_1, product_2, product_3):
+    assert product_1 + product_2 == 2580000.0
+    assert product_1 + product_3 == 1334000.0
+    assert product_2 + product_3 == 2114000.0
