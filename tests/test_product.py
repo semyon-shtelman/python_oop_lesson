@@ -1,5 +1,7 @@
 import pytest
-from src.product import Product
+
+from src.lawngrass import LawnGrass
+from src.smartphone import Smartphone
 
 
 @pytest.mark.parametrize(
@@ -79,3 +81,19 @@ def test_product_add(product_1, product_2, product_3):
     assert product_1 + product_2 == 2580000.0
     assert product_1 + product_3 == 1334000.0
     assert product_2 + product_3 == 2114000.0
+
+
+def test_product_addition(
+    smartphone1: Smartphone,
+    smartphone2: Smartphone,
+    grass1: LawnGrass,
+    grass2: LawnGrass,
+):
+    smartphone_sum = smartphone1 + smartphone2
+    assert smartphone_sum == 2580000.0
+
+    grass_sum = grass1 + grass2
+    assert grass_sum == 16750.0
+
+    with pytest.raises(TypeError):
+        smartphone1 + grass1
