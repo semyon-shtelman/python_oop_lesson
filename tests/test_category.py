@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_category_init(category_1, category_2):
     assert category_1.name == "Смартфоны"
     assert (
@@ -39,3 +42,8 @@ def test_category_add_product(category_1, product_4):
 def test_category_str_(category_1, category_2):
     assert str(category_1) == "Смартфоны, количество продуктов: 27 шт."
     assert str(category_2) == "Телевизоры, количество продуктов: 7 шт."
+
+
+def test_category_invalid_addition(category_1):
+    with pytest.raises(TypeError):
+        category_1.add_product("Not a product")
