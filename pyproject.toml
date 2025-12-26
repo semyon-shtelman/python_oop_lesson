@@ -27,4 +27,17 @@ black = "^25.11.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^9.0.1"
+pytest-cov = "^7.0.0"
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["src/main.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:"
+]
 
