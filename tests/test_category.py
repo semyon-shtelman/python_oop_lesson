@@ -1,5 +1,7 @@
 import pytest
 
+from src.category import Category
+
 
 def test_category_init(category_1, category_2):
     assert category_1.name == "Смартфоны"
@@ -47,3 +49,13 @@ def test_category_str_(category_1, category_2):
 def test_category_invalid_addition(category_1):
     with pytest.raises(TypeError):
         category_1.add_product("Not a product")
+
+
+def test_category_middle_price(category_1, category_2):
+    assert category_1.middle_price() == 140333.3
+    assert category_2.middle_price() == 123000.0
+
+
+def test_category_middle_price_not_product():
+    category_empty = Category("Пустая категория", "Категория без продуктов", [])
+    assert not category_empty.middle_price()
