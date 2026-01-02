@@ -33,3 +33,12 @@ class Category:
             raise TypeError
         self.__products.append(product)
         self.product_count += 1
+
+
+    def middle_price(self):
+        try:
+            total_price = sum(product.price for product in self.__products)
+            average_price = total_price / len(self.__products)
+            return round(average_price, 1)
+        except ZeroDivisionError:
+            return 0

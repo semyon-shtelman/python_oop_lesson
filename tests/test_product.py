@@ -1,6 +1,7 @@
 import pytest
 
 from src.lawngrass import LawnGrass
+from src.product import Product
 from src.smartphone import Smartphone
 
 
@@ -98,3 +99,9 @@ def test_product_addition(
 
     with pytest.raises(TypeError):
         smartphone1 + grass1
+
+
+def test_product_zero_quantity():
+    with pytest.raises(ValueError) as e:
+        Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+    assert str(e.value) == "Товар с нулевым количеством не может быть добавлен"
