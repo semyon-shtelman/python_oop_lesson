@@ -54,6 +54,7 @@ def test_product_new_product(new_product):
 
 
 def test_product_price(capsys, new_product):
+    capsys.readouterr()
     new_product.price = 800
     message = capsys.readouterr()
     assert message.out.strip() == ""

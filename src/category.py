@@ -34,7 +34,6 @@ class Category:
         self.__products.append(product)
         self.product_count += 1
 
-
     def middle_price(self):
         try:
             total_price = sum(product.price for product in self.__products)
